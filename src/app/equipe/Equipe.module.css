@@ -1,0 +1,76 @@
+.pageContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: #1B1212;
+    color: white;
+    min-height: 100vh; 
+    height: 100vh; 
+    overflow-y: auto; 
+}
+
+.equipeContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    overflow-y: auto; 
+    box-sizing: border-box; 
+}
+
+.equipeContainer::-webkit-scrollbar {
+    display: none; 
+}
+.headerSection {
+    background-color: rgba(160, 32, 240, 0.4);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: 4rem; 
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: #2C2C2C;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cardImage {
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #A020F0;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #CCCCCC;
+}
+
+.cardInfo {
+    background-color: #A020F0; 
+    color: white; 
+    padding: 0.5rem;
+    border-radius: 10px; 
+    text-align: center;
+    width: 100%; 
+    box-sizing: border-box; 
+}
