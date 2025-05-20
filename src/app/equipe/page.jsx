@@ -2,16 +2,17 @@
 
 import styles from "./equipe.module.css";
 import Navigation from "@/components/Navigation";
+import Noticias from "@/components/Noticias";
 import Image from "next/image";
 
 export default function Equipe() {
     const equipe = [
-        { nome: "Ana Carolina", cargo: "Scrum Master", imagem: "/anaCarolina.jpg" },
-        { nome: "Ana Julia", cargo: "Desenvolvedora", imagem: "/anaJulia.jpg" },
-        { nome: "Bernardo", cargo: "Desenvolvedor", imagem: "/Bernardo.jpg" },
-        { nome: "Beatriz", cargo: "Desenvolvedora", imagem: "/" },
-        { nome: "Caio", cargo: "Product Owner", imagem: "/Caio.jpg" },
-        { nome: "Luana", cargo: "Desenvolvedora", imagem: "/" },
+        { nome: "Ana Carolina", cargo: "Scrum Master", imagem: "/images/user-icon.png" },
+        { nome: "Ana Julia", cargo: "Desenvolvedora", imagem: "/images/user-icon.png" },
+        { nome: "Bernardo", cargo: "Desenvolvedor", imagem: "/images/user-icon.png" },
+        { nome: "Beatriz", cargo: "Desenvolvedora", imagem: "/images/user-icon.png" },
+        { nome: "Caio", cargo: "Product Owner", imagem: "/images/user-icon.png" },
+        { nome: "Luana", cargo: "Desenvolvedora", imagem: "/images/user-icon.png" },
     ];
 
     return (
@@ -42,6 +43,7 @@ export default function Equipe() {
                     ))}
                 </div>
             </div>
+            <Noticias />
         </div>
     );
 }

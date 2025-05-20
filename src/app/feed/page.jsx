@@ -7,6 +7,7 @@ import Noticias from "@/components/Noticias";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import Loader from "@/components/Loader";
+import Header from "@/components/Header";
 
 
 export default function Feed() {
@@ -21,8 +22,8 @@ export default function Feed() {
         setIsLoading(true);
         try{
             const url = post_id
-            ? `http://localhost:3000/api/post/${post_id}`
-            : "http://localhost:3000/api/post";
+            ? `http://localhost:4000/api/post/${post_id}`
+            : "http://localhost:4000/api/post";
             const response = await axios.get(url);
             setPosts(response.data);
             if (!post_id) {
@@ -48,7 +49,7 @@ export default function Feed() {
 
         try {
             console.log("API Key usada:", apiKey); 
-            const response = await axios.get("http://localhost:3000/api/post", {
+            const response = await axios.get("http://localhost:4000/api/post", {
                 headers: {
                     "x-api-key": apiKey 
                 }
@@ -79,8 +80,8 @@ export default function Feed() {
                         ))
                     )}
                 </div>
-                <Noticias />
             </div>
+            <Noticias />
         </div>
     );
 }

@@ -5,5 +5,5 @@ export const config = {
 };
 
 export default function middleware(req) {
-    return NextResponse.redirect(new URL("/<nome da pasta da rota>", req.url));
+    return NextResponse.redirect(new URL("/feed", req.url));
 }
