@@ -1,0 +1,8 @@
+.perfisContainer{
+    display: flex;
+    background-color: #1B1212;
+    min-height: 100vh;
+    width: 100%;
+    padding-left: 15%;
+    padding-top: 2rem;
+}

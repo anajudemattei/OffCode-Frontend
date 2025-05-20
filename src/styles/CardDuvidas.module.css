@@ -1,28 +1,21 @@
-.cardPostagem {
-    background-color: white; 
+.cardDuvidas {
+    background-color: #FFFFFF;
     border-radius: 20px;
     padding: 1.5rem;
     margin-bottom: 2rem;
-    color: black; 
-    width: 70%;
-    margin: 4rem auto; 
-    max-height: 400px; 
-    overflow-y: auto; 
+    width: 100;
 }
 
 .cardHeader {
     display: flex;
     align-items: center;
-    justify-content: center; 
     margin-bottom: 1rem;
-    height: 80px; 
 }
 
 .cardHeader h2 {
     font-size: 18px;
     margin-left: 1rem;
-    color: black; 
-    font-weight: 900; 
+    color: #FFFFFF;
 }
 
 .image {
@@ -33,11 +26,11 @@
 }
 
 .cardContent {
-    background-color: white; 
+    background-color: #1B1212;
     padding: 1rem;
     border-radius: 10px;
     margin-bottom: 1rem;
-    color: black; 
+    color: #CCCCCC;
 }
 
 .line {
