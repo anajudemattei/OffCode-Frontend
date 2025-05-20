@@ -1,7 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import styles from "../styles/Header.module.css";
 import Image from "next/image";
 
 export default function Header() {
+    const [showFilterDropdown, setShowFilterDropdown] = useState(false);
+    const [showSavedDropdown, setShowSavedDropdown] = useState(false);
+    const [selectedFilter, setSelectedFilter] = useState("Todos");
+
+    const filters = ["Todos", "Frontend", "Backend", "Mobile", "Fullstack"];
+    const savedSearches = ["Busca Ana", "Busca CSS", "Busca JavaScript"];
+
     return (
         <div className={styles.header}>
             <div className={styles.logoContainer}>
@@ -13,10 +23,39 @@ export default function Header() {
             </div>
 
             <div className={styles.filters}>
-                <button className={styles.filterButton}>Filtrar</button>
-                <div className={styles.filtersActive}>
-                    <span>Nome: Ana Luíza ✖️</span>
-                    <span>Linguagens: CSS ✖️</span>
+                <div className={styles.dropdown}>
+                    <button onClick={() => setShowFilterDropdown(!showFilterDropdown)} className={styles.filterButton}>
+                        {selectedFilter} ▼
+                    </button>
+                    {showFilterDropdown && (
+                        <div className={styles.dropdownContent}>
+                            {filters.map((filter, index) => (
+                                <div
+                                    key={index}
+                                    onClick={() => {
+                                        setSelectedFilter(filter);
+                                        setShowFilterDropdown(false);
+                                    }}
+                                >
+                                    {filter}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                <div className={styles.dropdown}>
+                    <button onClick={() => setShowSavedDropdown(!showSavedDropdown)} className={styles.filterButton}>
+                        ⋮
+                    </button>
+                    {showSavedDropdown && (
+                        <div className={styles.dropdownContent}>
+                            <strong>Buscas Salvas</strong>
+                            {savedSearches.map((search, index) => (
+                                <div key={index}>{search}</div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
 

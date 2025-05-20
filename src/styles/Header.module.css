@@ -1,68 +1,33 @@
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #1B1212;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid #444444;
+.dropdown {
+    position: relative;
 }
 
-.logoContainer {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logoText h1 {
-    color: #8C52FF;
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.logoText p {
-    color: #CCCCCC;
-    font-size: 0.8rem;
-    margin: 0;
-}
-
-.filters {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.filterButton {
-    background-color: #8C52FF;
-    color: #FFF;
-    border: none;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-}
-
-.filtersActive span {
-    background-color: #444444;
-    color: #FFF;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    cursor: pointer;
-}
-
-.searchContainer {
-    display: flex;
-    align-items: center;
-}
-
-.searchInput {
+.dropdownContent {
+    position: absolute;
+    top: 100%;
+    left: 0;
     background-color: #2C2C2C;
-    color: #FFF;
-    border: none;
-    border-radius: 20px;
-    padding: 0.5rem 1rem;
-    width: 200px;
+    border: 1px solid #444444;
+    border-radius: 10px;
+    z-index: 100;
+    min-width: 150px;
+    margin-top: 0.5rem;
 }
 
-.searchInput::placeholder {
-    color: #CCCCCC;
+.dropdownContent div {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 0.9rem;
+}
+
+.dropdownContent div:hover {
+    background-color: #3a3a3a;
+}
+
+.dropdownContent strong {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #8C52FF;
+    color: #8C52FF;
 }
