@@ -8,11 +8,11 @@ const font = Roboto ({
 });
 
 export const metadata = {
-    title: "<escreva o nome para aparecer na aba do navegador>",
+    title: "OffCode",
     icons: {
-    icon: "/icons/favicon.ico",
+    icon: "",
   },
-    description: "Projeto pra mostrar tudo que eu sei",
+    description: "",
 
 };
 
