@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.image {    
+    border-radius: 50%;
+}
+
+.message {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    color: #fff;
+}
