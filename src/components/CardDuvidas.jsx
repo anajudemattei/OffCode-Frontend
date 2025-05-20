@@ -5,15 +5,15 @@ import { useState } from "react";
 
 export default function CardDuvida({ image, username, content}) {
     
-    const [likeIcon, setLikeIcon] = useState("/coracao.png");
-    const [unlikeIcon, setUnlikeIcon] = useState("/coracao-roxo.png");
+    const [likeIcon, setLikeIcon] = useState("/images/coracao.png");
+    const [unlikeIcon, setUnlikeIcon] = useState("/images/coracao-roxo.png");
 
     return (
         <div className={styles.cardDuvidas}>
             <div className={styles.cardHeader}>
                 <Image 
                     className={styles.image} 
-                    src={image || "/default-profile.png"} 
+                    src={image || "/images/default-profile.png"} 
                     width={50} 
                     height={50}
                     alt="profile image"
@@ -27,7 +27,7 @@ export default function CardDuvida({ image, username, content}) {
                     className={styles.button}
                     onClick={() => 
                         setLikeIcon((prevIcon) => 
-                            prevIcon === "/coracao.png" ? "/coracao-roxo.png" : "/coracao.png"
+                            prevIcon === "/images/coracao.png" ? "/images/coracao-roxo.png" : "/images/coracao.png"
                         )
                     }>
                     <Image 
@@ -40,7 +40,7 @@ export default function CardDuvida({ image, username, content}) {
                 <button className={styles.button}>
                     <Image
                         className={styles.icon}
-                        src="/comente.png"
+                        src="/images/comente.png"
                         width={20}
                         height={20}
                         alt="comment icon" />
@@ -48,7 +48,7 @@ export default function CardDuvida({ image, username, content}) {
                 <button className={styles.buttonSave}>
                     <Image
                         className={styles.icon}
-                        src="/salvar.png"
+                        src="/images/salvar.png"
                         width={20}
                         height={20}
                         alt="save icon" />

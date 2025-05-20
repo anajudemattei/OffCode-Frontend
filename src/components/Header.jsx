@@ -15,7 +15,7 @@ export default function Header() {
     return (
         <div className={styles.header}>
             <div className={styles.logoContainer}>
-                <Image src="/LogosOffCode.png" alt="OffCode Logo" width={40} height={40} />
+                <Image src="/images/LogosOffCode.png" alt="OffCode Logo" width={40} height={40} />
                 <div className={styles.logoText}>
                     <h1>OFF CODE</h1>
                     <p>A melhor rede para suas dúvidas e posts de código</p>
@@ -29,17 +29,33 @@ export default function Header() {
                     </button>
                     {showFilterDropdown && (
                         <div className={styles.dropdownContent}>
-                            {filters.map((filter, index) => (
-                                <div
-                                    key={index}
-                                    onClick={() => {
-                                        setSelectedFilter(filter);
-                                        setShowFilterDropdown(false);
-                                    }}
-                                >
-                                    {filter}
-                                </div>
-                            ))}
+                            {filters.map((filter, index) => {
+    // Exemplo: supondo que você queira criar um link para cada filtro
+    const href = filter !== "" ? `/filtro/${filter.toLowerCase()}` : null;
+    return href ? (
+        <a
+            key={index}
+            href={href}
+            onClick={() => {
+                setSelectedFilter(filter);
+                setShowFilterDropdown(false);
+            }}
+            className={styles.filterLink}
+        >
+            {filter}
+        </a>
+    ) : (
+        <div
+            key={index}
+            onClick={() => {
+                setSelectedFilter(filter);
+                setShowFilterDropdown(false);
+            }}
+        >
+            {filter}
+        </div>
+    );
+})}
                         </div>
                     )}
                 </div>

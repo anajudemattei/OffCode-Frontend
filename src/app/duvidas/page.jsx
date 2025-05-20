@@ -4,6 +4,7 @@ import styles from "./Duvidas.module.css";
 import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import CardDuvidas from "@/components/CardDuvidas";
+import Noticias from "@/components/Noticias";
 
 export default function Duvidas() {
     return (
@@ -18,7 +19,9 @@ export default function Duvidas() {
                     <CardDuvidas  username="User4" content="<div><h1>Hello World<h1></div>"/>
                     <CardDuvidas  username="User5" content="<div><h1>Hello World<h1></div>"/>
                 </div>
-            </div> 
+            </div>
+            
+                <Noticias />
         </div>
     );
 
