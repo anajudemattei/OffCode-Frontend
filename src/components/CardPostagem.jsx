@@ -4,8 +4,10 @@ import { useState } from "react";
 import { Skeleton } from "antd";
 import axios from "axios";
 import { Modal } from "antd";
+import { toast } from "react-toastify";
 
 export default function CardPostagem({ post, onClick, usuario }) {
+    const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalInfo, setModalInfo] = useState({
     visible: false,
@@ -45,6 +47,20 @@ export default function CardPostagem({ post, onClick, usuario }) {
       setModalInfo((m) => ({ ...m, loading: false }));
     }
   };
+
+    const [liked, setLiked] = useState(false);
+    const [likeCount, setLikeCount] = useState(post.likes ? post.likes : 0);
+
+    const handleLike = (e) => {
+        e.stopPropagation();
+        if (!liked) {
+            setLiked(true);
+            setLikeCount(likeCount + 1);
+        } else {
+            setLiked(false);
+            setLikeCount(likeCount - 1);
+        }
+    };
 
     return (
         <>
@@ -87,29 +103,27 @@ export default function CardPostagem({ post, onClick, usuario }) {
                 )}
 
                 <div className={styles.cardFooter}>
-                    <button className={styles.likeButton}>
+                    <button className={styles.likeButton} onClick={handleLike}>
                         <Image
                             alt="Ícone de curtir"
-                            src="/images/coracao.png"
+                            src={liked ? "/images/coracao-roxo.png" : "/images/coracao.png"}
                             width={24}
                             height={24}
                             className={styles.likeIcon}
                         />
                         <span className={styles.likeCount}>
-                            onClick={() => {
-                                {post.likes ? post.likes : 0}
-                            }
+                            {likeCount}
                         </span>
                     </button>
                     <button
-    className={styles.commentButton}
-    onClick={(e) => {
-        e.stopPropagation(); // evita abrir o modal da imagem/card
-        openModal(post);
-    }}
->
-    Comentários
-</button>
+                        className={styles.commentButton}
+                        onClick={(e) => {
+                            e.stopPropagation(); // evita abrir o modal da imagem/card
+                            openModal(post);
+                        }}
+                    >
+                        Comentários
+                    </button>
                     <button className={styles.saveButton}>Save</button>
                 </div>
             </div>
@@ -125,42 +139,39 @@ export default function CardPostagem({ post, onClick, usuario }) {
             )}
 
             <Modal
-        title={`Comentários de ${modalInfo.comentario?.data_publicacao}`}
-        open={modalInfo.visible}
-        onCancel={() =>
-          setModalInfo({
-            visible: false,
-            post: null,
-            comentario: null,
-            loading: false,
-          })
-        }
-        onOk={() =>
-          setModalInfo({
-            visible: false,
-            post: null,
-            comentario: null,
-            loading: false,
-          })
-        }
-        width={800}
-      >
-        {modalInfo.loading ? (
-          <Skeleton active />
-        ) : modalInfo.comentario ? (
-          <div>
-            <p>
-              <strong>Comentário:</strong>{" "}
-              {modalInfo.comentario.conteudo_comentario}
-            </p>
-            <p>
-              <strong>Imagem:</strong> {modalInfo.comentario.anexo}
-            </p>
-          </div>
-        ) : (
-          <p>Nenhum comentário encontrado.</p>
-        )}
-      </Modal>
+                title={`Comentários`}
+                open={modalInfo.visible}
+                onCancel={() =>
+                    setModalInfo({
+                        visible: false,
+                        post: null,
+                        comentario: null,
+                        loading: false,
+                    })
+                }
+                onOk={() =>
+                    setModalInfo({
+                        visible: false,
+                        post: null,
+                        comentario: null,
+                        loading: false,
+                    })
+                }
+                width={800}
+            >
+                {modalInfo.loading ? (
+                    <Skeleton active />
+                ) : Array.isArray(modalInfo.comentario) && modalInfo.comentario.length > 0 ? (
+                    modalInfo.comentario.map((c, i) => (
+                        <div key={i}>
+                            <p><strong>Comentário:</strong> {c.conteudo_comentario}</p>
+                            <p><strong>Imagem:</strong> {c.anexo}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>Nenhum comentário encontrado.</p>
+                )}
+            </Modal>
         </>
     );
 }
