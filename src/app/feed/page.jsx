@@ -1,87 +1,150 @@
 "use client";
-
-import styles from "./feed.module.css";
-import Navigation from "@/components/Navigation";
-import { CardPostagem } from "@/components/CardPostagem"; 
-import Noticias from "@/components/Noticias";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Loader from "@/components/Loader";
+import { Pagination, Modal, Card, Skeleton} from "antd";
+import Image from "next/image";
 import Header from "@/components/Header";
+import Loader from "@/components/Loader";
+import Navigation from '@/components/Navigation';
+import { ToastContainer, toast } from "react-toastify";
 
+const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY};
 
 export default function Feed() {
-    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    const [posts, setPosts] = useState([]);
-    const [selectedPost, setSelectedPost] = useState(null);
-    const [allPosts, setAllPosts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    
+    const [data, setData] = useState({
+        posts: [],
+        loading: true,
+        current: 1,
+        pageSize: 10,
+    });
 
-    const fetchPosts = async (post_id = "") => {
-        setIsLoading(true);
-        try{
-            const url = post_id
-            ? `http://localhost:4000/api/post/${post_id}`
-            : "http://localhost:4000/api/post";
-            const response = await axios.get(url);
-            setPosts(response.data);
-            if (!post_id) {
-                setAllPosts(response.data);
-            }
-        } catch (error) {
-            console.error("Erro ao carregar posts:", error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    const [modalInfo, setModalInfo] = useState({
+        visible: false,
+        post: null,
+        comentario: null,
+        loading: false,
+    });
 
     useEffect(() => {
-    const fetchComCache = async () => {
-        const cacheKey = "postsData";
-        const cache = sessionStorage.getItem(cacheKey);
-
-        if (cache) {
-            setPosts(JSON.parse(cache));
-            setIsLoading(false);
-            return;
+        const fetchPosts = async () => {
+            const cacheKey = "postsData";
+            try {
+                const response = await axios.get(
+                    `${process.env.NEXT_PUBLIC_API_URL}/posts`,
+                    { headers : headers }
+                );
+                setData({ posts: response.data, loading: false, current: 1, pageSize: 10 });
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+                toast.error("Erro ao carregar os posts.");
+                setData((d) => ({ ...d, loading: false }));
+            }
         }
+        fetchPosts();
+    }, []);
 
+    const openModal = async (post) => {
+        setModalInfo({
+            visible: true,
+            post: post,
+            comentario: null,
+            loading: true, 
+        });
         try {
-            console.log("API Key usada:", apiKey); 
-            const response = await axios.get("http://localhost:4000/api/post", {
-                headers: {
-                    "x-api-key": apiKey 
-                }
-            });
-            setPosts(response.data);
-            sessionStorage.setItem(cacheKey, JSON.stringify(response.data));
+            const { data: comentario } = await axios.get(
+                `${process.env.NEXT_PUBLIC_API_URL}/comments/${post.id}`,
+                { headers: headers }
+            );
+            setModalInfo((m) => ({ ...m, comentario, loading: false }));
         } catch (error) {
-            console.error("Erro ao carregar os posts:", error);
-            alert("Erro ao carregar os posts.");
-        } finally {
-            setIsLoading(false);
+            toast.error("Erro ao carregar os comentários.");
+            setModalInfo((m) => ({ ...m, loading: false }));
         }
     };
 
-    fetchComCache();
-}, []);
+const paginatedPosts = () => {
+    const start = (data.current - 1) * data.pageSize;
+    return data.posts.slice(start, start + data.pageSize);
+};
 
-    return (
-        <div className={styles.pageContainer}>
-            <Navigation />
-            <div className={styles.mainContent}>
-                <div className={styles.feedContent}>
-                    {isLoading ? (
-                        <Loader />
-                    ): (
-                        posts.map((post, index) => (
-                            <CardPostagem key={post.id || index} usuarios={post.usuarios} posts={post.posts} />  
-                        ))
-                    )}
+return (
+    <div className="feed-container">
+        <Header />
+        <Navigation />
+
+        <ToastContainer />
+        <h1>Feed de Posts</h1>
+
+        <Pagination
+            current={data.current}
+            pageSize={data.pageSize}
+            total={data.posts.length}
+            onChange={(page, pageSize) => setData({ ...data, current: page, pageSize })}
+            showSizeChanger
+            pageSizeOptions={[5, 10, 20, 50]}
+            />
+
+            {data.loading ? (
+                <Loader />
+            ) : (
+                <div className="posts-list">
+                    {paginatedPosts().map((post, idx) => (
+           <Card
+        hoverable
+        key={post.id ?? idx} // Usa o id se existir, senão usa o índice
+        onClick={() => openModal(post)}
+        cover={
+            <Image
+    alt={post.data_publicacao}
+    src={
+        post.anexo && post.anexo !== "NULL" && post.anexo !== "null" && post.anexo !== ""
+            ? post.anexo
+            : "/images/default-profile.png" // coloque o caminho relativo correto para sua imagem padrão
+    }
+    width={500}
+    height={300}
+    className="post-image"
+/>
+        }
+    >
+        <Card.Meta title={post.data_publicacao} />
+    </Card>
+))}
                 </div>
-            </div>
-            <Noticias />
-        </div>
-    );
+            )}
+        
+        <Modal
+            title={`Comentários de ${modalInfo.comentarios?.data_publicacao }`}
+            open={modalInfo.visible}
+            onCancel={() => setModalInfo({
+                visible: false,
+                post: null,
+                comentario: null,
+                loading: false,
+            })}
+
+            onOk={() => setModalInfo({
+                visible: false,
+                post: null,
+                comentario: null,
+                loading: false,
+            })}
+            width={800}
+        >
+            {modalInfo.loading ? (
+                <Skeleton active />
+            ) : (
+                modalInfo.comentario ? (
+                    <div>
+                        <p><strong>Comentário:</strong> {modalInfo.comentario.conteudo_comentario}</p>
+                        <p><strong>Imagem:</strong> {modalInfo.comentario.anexo}</p>
+                    </div>
+
+                ) : (
+                    <p>Nenhum comentário encontrado.</p>
+                )
+            )}
+        </Modal>
+    </div>
+);
 }
