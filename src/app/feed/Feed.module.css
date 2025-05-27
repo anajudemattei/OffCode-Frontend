@@ -1,38 +1,18 @@
 .pageContainer {
-    display: flex;
-    flex-direction: row;
-    background-color: #1B1212;
-    color: white;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #1B1212;
+  color: white;
+  height: 100vh;
 }
 
-.pageContainer > nav {
-    flex: 0 0 250px;
-    margin-right: 20px;
+.feedColumn {
+  overflow-y: auto;
+  flex-direction: column;
+ scrollbar-width: none;
 }
 
-.mainContent {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    gap: 20px;
-    height: 100vh;
-    overflow: hidden; 
+.feed {
+    padding: 3rem;
 }
 
-.feedContent {
-    flex-grow: 2;   
-    max-width: 800px;
-    height: 100%; 
-    overflow-y: auto; 
-    scrollbar-width: none;
-    -ms-overflow-style: none; 
-}
-
-.feedContent::-webkit-scrollbar {
-    display: none;
-}
-
-.sidebar {
-    flex: 0 0 250px;
-}       

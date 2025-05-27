@@ -7,6 +7,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 16px;
     margin: 16px;
+    max-height: 600px;
 }
 
 .cardHeader {
@@ -36,8 +37,30 @@
 }
 
 .postImage {
-    width: 100%;
-    height: auto;
     border-radius: 8px;
     margin-bottom: 16px;
+    max-width: 500px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.expandedImage {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  pointer-events: none; /* evita clique na imagem */
 }
