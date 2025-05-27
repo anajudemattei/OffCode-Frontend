@@ -21,7 +21,7 @@
 }
 
 .feedContent {
-    flex-grow: 2;
+    flex-grow: 2;   
     max-width: 800px;
     height: 100%; 
     overflow-y: auto; 
@@ -35,4 +35,4 @@
 
 .sidebar {
     flex: 0 0 250px;
-}
+}       
