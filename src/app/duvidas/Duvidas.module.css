@@ -1,35 +1,46 @@
-.duvidasGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start;
-    margin-top: 20px;
-  }
-  
-  .duvidasWrapper {
-    width: calc(50% - 20px);
-    box-sizing: border-box;
-  }
-  
-  @media (max-width: 768px) {
-    .duvidasWrapper {
-      width: 100%;
-    }
-  }
-  
-  .container {
+
+
+.container {
     display: flex;
     flex-direction: row;
     background-color: #1b1212;
-  }
-  
-  .container h1 {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container h1 {
     color: #8C52FF;
-  }
-  
-  .duvidasContainer {
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+}
+
+.duvidasContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-  }
+    overflow-y: auto;
+    height: 100%;
+    padding-right: 10px;
+    gap: 10px;
+    scrollbar-width: none;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+
+.pagination:hover button {
+    background-color: #8C52FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+}
