@@ -16,3 +16,35 @@
     padding: 3rem;
 }
 
+.feed h1 {
+  color: #8C52FF;
+  text-transform: uppercase;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  color: #8C52FF;
+}
+
+.pagination .ant-pagination .ant-pagination-item-active a {
+  background-color: #8C52FF;
+  color: white;
+}
+
+.pagination .ant-pagination .ant-pagination-item a {
+  color: #8C52FF;
+}
+
+.pagination .ant-pagination .ant-pagination-item-active {
+  border-color: #8C52FF;
+}
+
+.pagination .ant-pagination .ant-pagination-item {
+  border-color: #8C52FF;
+}
+
+.pagination .ant-pagination {
+  color: #8C52FF;
+}

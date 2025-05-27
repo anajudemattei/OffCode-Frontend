@@ -73,11 +73,10 @@ export default function CardPostagem({ post, onClick, usuario }) {
                     {usuario && (
                         <Image
                             alt="Avatar do usuário"
-                            src={usuario.avatar || "/default-profile.png"}
+                            src={usuario.foto_perfil || "/images/default-profile.png"}
                             width={40}
                             height={40}
                             className={styles.avatar}
-                            onError={handleImageError}
                         />
                     )}
                     <div className={styles.userInfo}>
