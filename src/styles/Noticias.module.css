@@ -64,3 +64,13 @@
     color: black;
     line-height: 1.5;
 }
+
+.newsLink {
+    color: #000000; 
+    text-decoration: none; 
+    transition: color 0.3s ease;
+}
+
+.newsLink:hover {
+    color: #8C52FF; 
+}

@@ -4,15 +4,16 @@ import styles from "./equipe.module.css";
 import Navigation from "@/components/Navigation";
 import Noticias from "@/components/Noticias";
 import Image from "next/image";
+import FlipCard from "@/components/FlipCard";
 
 export default function Equipe() {
     const equipe = [
-        { nome: "Ana Carolina", cargo: "Scrum Master", imagem: "/images/user-icon.png" },
-        { nome: "Ana Julia", cargo: "Desenvolvedora", imagem: "/images/user-icon.png" },
-        { nome: "Bernardo", cargo: "Desenvolvedor", imagem: "/images/user-icon.png" },
-        { nome: "Beatriz", cargo: "Desenvolvedora", imagem: "/images/user-icon.png" },
-        { nome: "Caio", cargo: "Product Owner", imagem: "/images/user-icon.png" },
-        { nome: "Luana", cargo: "Desenvolvedora", imagem: "/images/user-icon.png" },
+        { nome: "Ana Carolina", cargo: "Scrum Master", imagem: "/images/luanaCard.png" },
+        { nome: "Ana Julia", cargo: "Desenvolvedora", imagem: "/images/luanaCard.png" },
+        { nome: "Bernardo", cargo: "Desenvolvedor", imagem: "/images/luanaCard.png" },
+        { nome: "Beatriz", cargo: "Desenvolvedora", imagem: "/images/luanaCard.png" },
+        { nome: "Caio", cargo: "Product Owner", imagem: "/images/luanaCard.png" },
+        { nome: "Luana", cargo: "Desenvolvedora", imagem: "/images/luanaCard.png" },
     ];
 
     return (
@@ -27,19 +28,13 @@ export default function Equipe() {
                 </div>
                 <div className={styles.cardsContainer}>
                     {equipe.map((membro, index) => (
-                        <div className={styles.card} key={index}>
-                            <Image
-                                src={membro.imagem}
-                                alt={membro.nome}
-                                width={150}
-                                height={150}
-                                className={styles.cardImage}
-                            />
-                            <div className={styles.cardInfo}>
-                                <h2>{membro.nome}</h2>
-                                <p>{membro.cargo}</p>
-                            </div>
-                        </div>
+                        <FlipCard
+                            key={index}
+                            frontImage={membro.imagem}
+                            backTitle={membro.nome}
+                            backText1={membro.cargo}
+                            backText2="Parte da equipe OffCode"
+                        />
                     ))}
                 </div>
             </div>

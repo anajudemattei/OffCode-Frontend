@@ -1,0 +1,55 @@
+.flipCard {
+    background-color: transparent;
+    display: inline-block;
+    width: auto; 
+    height: auto; 
+    perspective: 1000px;
+}
+
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flipCard:hover .flipCardInner {
+    transform: rotateY(180deg);
+}
+
+.flipCardFront, .flipCardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.flipCardFront {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flipCardBack {
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%; /* Garante que o lado de trás tenha o mesmo tamanho da frente */
+    height: 100%; /* Garante que o lado de trás tenha o mesmo tamanho da frente */
+}
+
+.cardImage {
+    display: block;
+    width: 100%; /* Garante que a largura do card seja igual à largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço do card */
+}
