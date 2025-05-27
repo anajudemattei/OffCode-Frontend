@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import CardDuvidas from "@/components/CardDuvidas";
 import styles from "./Duvidas.module.css"
 import Noticias from "@/components/Noticias";
+import ButtonTop from "@/components/ButtonTop";
 
 
 const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY};
@@ -137,6 +138,7 @@ return (
             )}
         </Modal>
     </div>
+        <ButtonTop onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
     </div>
 );
 }

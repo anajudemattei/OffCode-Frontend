@@ -1,0 +1,39 @@
+.button {
+    position: fixed;
+    bottom: 36px;
+    right: 36px;
+    z-index: 1000;
+    background: linear-gradient(135deg, #8C55FF 60%, #000000 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.418);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #8C55FF 60%, #000000 100%);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.416);
+    transform: translateY(-4px) scale(1.07);
+}
+
+.button:focus {
+  box-shadow: 0 0 0 3px #8148fb;
+}
+
+@media (max-width: 600px) {
+  .button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    bottom: 16px;
+    right: 16px;
+  }
+}
