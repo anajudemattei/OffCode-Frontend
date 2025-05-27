@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Loader from "@/components/Loader";
 import Navigation from '@/components/Navigation';
 import { ToastContainer, toast } from "react-toastify";
+import CardPostagem from "@/components/CardPostagem";
 
 const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY};
 
@@ -85,36 +86,21 @@ return (
             />
 
             {data.loading ? (
-                <Loader />
-            ) : (
-                <div className="posts-list">
-                    {paginatedPosts().map((post, idx) => (
-           <Card
-        hoverable
-        key={post.id ?? idx} // Usa o id se existir, senão usa o índice
-        onClick={() => openModal(post)}
-        cover={
-            <Image
-    alt={post.data_publicacao}
-    src={
-        post.anexo && post.anexo !== "NULL" && post.anexo !== "null" && post.anexo !== ""
-            ? post.anexo
-            : "/images/default-profile.png" // coloque o caminho relativo correto para sua imagem padrão
-    }
-    width={500}
-    height={300}
-    className="post-image"
-/>
-        }
-    >
-        <Card.Meta title={post.data_publicacao} />
-    </Card>
-))}
-                </div>
-            )}
+    <Loader />
+) : (
+    <div className="posts-list">
+        {paginatedPosts().map((post, idx) => (
+            <CardPostagem
+                key={post.id ?? idx}
+                post={post}
+                onClick={() => openModal(post)}
+            />
+        ))}
+    </div>
+)}
         
         <Modal
-            title={`Comentários de ${modalInfo.comentarios?.data_publicacao }`}
+            title={`Comentários de ${modalInfo.comentario?.data_publicacao }`}
             open={modalInfo.visible}
             onCancel={() => setModalInfo({
                 visible: false,
