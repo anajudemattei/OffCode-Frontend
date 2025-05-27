@@ -1,6 +1,7 @@
 import styles from '../styles/Noticias.module.css';
 
 const Noticias = () => {
+
   const noticias = [
     {
       img: '/images/RealidadeAumentada.png',
@@ -48,6 +49,7 @@ const Noticias = () => {
       link: 'https://www.camara.leg.br/noticias/1159193-projeto-regulamenta-uso-da-inteligencia-artificial-no-brasil/'
     }
   ];
+
 
   return (
     <div className={styles.sidebar}>

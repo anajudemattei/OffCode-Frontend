@@ -1,9 +1,10 @@
 "use client";
 
-import { Noticia_Text } from "next/font/google";
+
 import styles from "./Perfis.module.css";
 import Navigation from "@/components/Navigation";
 import Noticias from "@/components/Noticias";
+
 
 export default function Perfis() {
     return (
