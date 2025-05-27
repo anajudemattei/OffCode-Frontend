@@ -1,154 +1,150 @@
 "use client";
-
-import styles from "./feed.module.css";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Pagination, Modal, Skeleton } from "antd"; 
-import { ToastContainer, toast } from "react-toastify";
-import { getSessionStorage, setSessionStorage } from "../../utils/sessionStorage";
-import Loader from "@/components/Loader";
+import { Pagination, Modal, Card, Skeleton} from "antd";
+import Image from "next/image";
 import Header from "@/components/Header";
-import Navigation from "@/components/Navigation";
-import CardPostagem from "@/components/CardPostagem"; 
-import Noticias from "@/components/Noticias";
+import Loader from "@/components/Loader";
+import Navigation from '@/components/Navigation';
+import { ToastContainer, toast } from "react-toastify";
 
-const Headers = {"x-api-key": process.env.NEXT_PUBLIC_API_KEY};
-
+const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY};
 
 export default function Feed() {
     const [data, setData] = useState({
-        posts:[],
+        posts: [],
         loading: true,
         current: 1,
-        pageSize: 0,
+        pageSize: 10,
     });
 
-    const[modalInfo, setModalInfo] = useState({
+    const [modalInfo, setModalInfo] = useState({
         visible: false,
         post: null,
+        comentario: null,
         loading: false,
     });
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const cached = getSessionStorage("postsData", []);
-            if (cached.length > 0) {
-                setData({posts: cached, loading: false, current: 1, pageSize: 10});
-                return;
-            } try {
-                const {data : posts} = await axios.get(
+            const cacheKey = "postsData";
+            try {
+                const response = await axios.get(
                     `${process.env.NEXT_PUBLIC_API_URL}/posts`,
-                    { headers: Headers }
+                    { headers : headers }
                 );
-                setSessionStorage("postsData", posts);
-                setData({posts, loading: false, current: 1, pageSize: 5});
-                } catch (error) {
-                    console.error("Erro ao buscar posts:", error);
-                    TurborepoAccessTraceResult.error("Erro ao carregar posts");
-                    setData((d) => ({...d, loading: false}));
+                setData({ posts: response.data, loading: false, current: 1, pageSize: 10 });
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+                toast.error("Erro ao carregar os posts.");
+                setData((d) => ({ ...d, loading: false }));
+            }
         }
-    };
-fetchPosts();
+        fetchPosts();
     }, []);
 
     const openModal = async (post) => {
-        setModalInfo({ visible: true, post, loading: true });
-
-        const cacheKey = `post_${post.id}`;
-        const cached = getSessionStorage(cacheKey, null);
-        if (cached) {
-            setModalInfo ((m) => ({...m, post: cached, loading: false}));
-            return;
-        }
-
+        setModalInfo({
+            visible: true,
+            post: post,
+            comentario: null,
+            loading: true, 
+        });
         try {
-            const { data: post } = await axios.get(
-                `${process.env.NEXT_PUBLIC_API_URL}/posts/${post.id}`,
-                {
-                    headers: Headers,
-                }
+            const { data: comentario } = await axios.get(
+                `${process.env.NEXT_PUBLIC_API_URL}/comments/${post.id}`,
+                { headers: headers }
             );
-            setSessionStorage(cacheKey, post);setModalInfo((m) => ({...m, post, loading: false}));
-        } catch {
-            toast.error("Erro ao carregar post");
-            setModalInfo((m) => ({ ...m, loading:false}));
+            setModalInfo((m) => ({ ...m, comentario, loading: false }));
+        } catch (error) {
+            toast.error("Erro ao carregar os comentários.");
+            setModalInfo((m) => ({ ...m, loading: false }));
         }
     };
-     
-    const paginatedPosts = () => {
-        const start = (data.current - 1) * data.pageSize;
-        return data.posts.slice(start, start + data.pageSize);
-    };
 
-    return (
-        <div className={styles.pageContainer}>
-            <Navigation />
-            <Header />
+const paginatedPosts = () => {
+    const start = (data.current - 1) * data.pageSize;
+    return data.posts.slice(start, start + data.pageSize);
+};
 
-            <Pagination
-                current={data.current}
-                className={styles.pagination}
-                pageSize={data.pageSize}
-                total={data.posts.length}
-                onChange={(page, size) => {
-                    setData((d) => ({ ...d, current: page, pageSize: size }));
-                }}
-                showSizeChanger
-                pageSizeOptions={[5, 10, 20]}
+return (
+    <div className="feed-container">
+        <Header />
+        <Navigation />
+
+        <ToastContainer />
+        <h1>Feed de Posts</h1>
+
+        <Pagination
+            current={data.current}
+            pageSize={data.pageSize}
+            total={data.posts.length}
+            onChange={(page, pageSize) => setData({ ...data, current: page, pageSize })}
+            showSizeChanger
+            pageSizeOptions={[5, 10, 20, 50]}
             />
 
             {data.loading ? (
                 <Loader />
             ) : (
-                <div className={styles.mainContent}>
-                    <div className={styles.feedContent}>
-                        {paginatedPosts().map((post) => (
-                            <CardPostagem
-                                key={post.id}
-                                post={post}
-                                hoverable
-                                onClick={() => openModal(post)}
-                            />
-                        ))}
-                    </div>
-
-                    <Modal
-                        title={`Postagem de ${modalInfo.post?.usuario_id.username || ""}`}
-                        open={modalInfo.visible}
-                        onCancel={() =>
-                            setModalInfo({
-                                visible: false,
-                                post: null,
-                                loading: false,
-                            })
-                        }
-                        onOk={() =>
-                            setModalInfo({
-                                visible: false,
-                                post: null,
-                                loading: false,
-                            })
-                        }
-                        width={600}
-                    >
-                        {modalInfo.loading ? (
-                            <Skeleton active />
-                        ) : modalInfo.post ? (
-                            <div className={styles.postInfo}>
-                                <CardPostagem post={modalInfo.post} />
-                            </div>
-                        ) : (
-                            <p style={{ textAlign: "center" }}>
-                                Nenhum post encontrado
-                            </p>
-                        )}
-                    </Modal>
-
-                    <Noticias />
-
-                       <ToastContainer position="top-right" autoClose={3000} />
+                <div className="posts-list">
+                    {paginatedPosts().map((post, idx) => (
+           <Card
+        hoverable
+        key={post.id ?? idx} // Usa o id se existir, senão usa o índice
+        onClick={() => openModal(post)}
+        cover={
+            <Image
+    alt={post.data_publicacao}
+    src={
+        post.anexo && post.anexo !== "NULL" && post.anexo !== "null" && post.anexo !== ""
+            ? post.anexo
+            : "/images/default-profile.png" // coloque o caminho relativo correto para sua imagem padrão
+    }
+    width={500}
+    height={300}
+    className="post-image"
+/>
+        }
+    >
+        <Card.Meta title={post.data_publicacao} />
+    </Card>
+))}
                 </div>
             )}
-        </div>
-    );
+        
+        <Modal
+            title={`Comentários de ${modalInfo.comentarios?.data_publicacao }`}
+            open={modalInfo.visible}
+            onCancel={() => setModalInfo({
+                visible: false,
+                post: null,
+                comentario: null,
+                loading: false,
+            })}
+
+            onOk={() => setModalInfo({
+                visible: false,
+                post: null,
+                comentario: null,
+                loading: false,
+            })}
+            width={800}
+        >
+            {modalInfo.loading ? (
+                <Skeleton active />
+            ) : (
+                modalInfo.comentario ? (
+                    <div>
+                        <p><strong>Comentário:</strong> {modalInfo.comentario.conteudo_comentario}</p>
+                        <p><strong>Imagem:</strong> {modalInfo.comentario.anexo}</p>
+                    </div>
+
+                ) : (
+                    <p>Nenhum comentário encontrado.</p>
+                )
+            )}
+        </Modal>
+    </div>
+);
 }

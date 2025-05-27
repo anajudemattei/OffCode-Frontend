@@ -1,83 +1,45 @@
-"use client";
+import React from 'react';
 
-import { useState } from "react";
-import styles from "../styles/Header.module.css";
-import Image from "next/image";
-
-export default function Header() {
-    const [showFilterDropdown, setShowFilterDropdown] = useState(false);
-    const [showSavedDropdown, setShowSavedDropdown] = useState(false);
-    const [selectedFilter, setSelectedFilter] = useState("Todos");
-
-    const filters = ["Todos", "Frontend", "Backend", "Mobile", "Fullstack"];
-    const savedSearches = ["Busca Ana", "Busca CSS", "Busca JavaScript"];
-
+const Header = () => {
     return (
-        <div className={styles.header}>
-            <div className={styles.logoContainer}>
-                <Image src="/images/LogosOffCode.png" alt="OffCode Logo" width={40} height={40} />
-                <div className={styles.logoText}>
-                    <h1>OFF CODE</h1>
-                    <p>A melhor rede para suas dúvidas e posts de código</p>
-                </div>
-            </div>
-
-            <div className={styles.filters}>
-                <div className={styles.dropdown}>
-                    <button onClick={() => setShowFilterDropdown(!showFilterDropdown)} className={styles.filterButton}>
-                        {selectedFilter} ▼
-                    </button>
-                    {showFilterDropdown && (
-                        <div className={styles.dropdownContent}>
-                            {filters.map((filter, index) => {
-    // Exemplo: supondo que você queira criar um link para cada filtro
-    const href = filter !== "" ? `/filtro/${filter.toLowerCase()}` : null;
-    return href ? (
-        <a
-            key={index}
-            href={href}
-            onClick={() => {
-                setSelectedFilter(filter);
-                setShowFilterDropdown(false);
-            }}
-            className={styles.filterLink}
-        >
-            {filter}
-        </a>
-    ) : (
-        <div
-            key={index}
-            onClick={() => {
-                setSelectedFilter(filter);
-                setShowFilterDropdown(false);
-            }}
-        >
-            {filter}
-        </div>
+        <header style={styles.header}>
+            <h1 style={styles.title}>OffCode</h1>
+            <nav>
+                <ul style={styles.navList}>
+                    <li><a href="/" style={styles.link}>Home</a></li>
+                    <li><a href="/about" style={styles.link}>Sobre</a></li>
+                    <li><a href="/contact" style={styles.link}>Contato</a></li>
+                </ul>
+            </nav>
+        </header>
     );
-})}
-                        </div>
-                    )}
-                </div>
+};
 
-                <div className={styles.dropdown}>
-                    <button onClick={() => setShowSavedDropdown(!showSavedDropdown)} className={styles.filterButton}>
-                        ⋮
-                    </button>
-                    {showSavedDropdown && (
-                        <div className={styles.dropdownContent}>
-                            <strong>Buscas Salvas</strong>
-                            {savedSearches.map((search, index) => (
-                                <div key={index}>{search}</div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            </div>
+const styles = {
+    header: {
+        background: '#222',
+        color: '#fff',
+        padding: '16px 32px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    title: {
+        margin: 0,
+        fontSize: '2rem'
+    },
+    navList: {
+        listStyle: 'none',
+        display: 'flex',
+        gap: '24px',
+        margin: 0,
+        padding: 0
+    },
+    link: {
+        color: '#fff',
+        textDecoration: 'none',
+        fontSize: '1rem'
+    }
+};
 
-            <div className={styles.searchContainer}>
-                <input type="text" placeholder="Pesquisar" className={styles.searchInput} />
-            </div>
-        </div>
-    );
-}
+export default Header;
