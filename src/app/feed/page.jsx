@@ -64,9 +64,10 @@ export default function Feed() {
         </div>
 
         <div className={styles.feed}>
-        <h1>Feed de Posts</h1>
+        <h1>Feed</h1>
 
         <Pagination
+          className={styles.pagination}
           current={data.current}
           pageSize={data.pageSize}
           total={data.posts.length}
@@ -81,11 +82,15 @@ export default function Feed() {
           <Loader />
         ) : (
           <div className="posts-list">
-            {paginatedPosts().map((post, idx) => (
+            {paginatedPosts().map((post, idx, usuario) => (
               <CardPostagem
-                key={post.id ?? idx}
-                post={post}
-              />
+  key={post.id_post ?? idx}
+  post={post}
+  usuario={{
+    username: post.username,
+    avatar: post.foto_perfil?.startsWith("http") ? post.foto_perfil : `/${post.foto_perfil}` // cuida de path relativo
+  }}
+/>
             ))}
           </div>
         )}
