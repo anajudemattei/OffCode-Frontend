@@ -1,6 +1,35 @@
-.duvidasContainer {
+.duvidasGrid {
     display: flex;
-    background-color: #1B1212;
-    width: 100%;
-    height: auto;
-}
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  
+  .duvidasWrapper {
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 768px) {
+    .duvidasWrapper {
+      width: 100%;
+    }
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+    background-color: #1b1212;
+  }
+  
+  .container h1 {
+    color: #8C52FF;
+  }
+  
+  .duvidasContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }

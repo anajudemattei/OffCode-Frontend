@@ -8,6 +8,7 @@ const nextConfig = {
       "ncrypted-tbn0.gstatic.com",
       "encrypted-tbn0.gstatic.com",
       "miro.medium.com",
+      "i.imgur.com",
     ],
   },
 };

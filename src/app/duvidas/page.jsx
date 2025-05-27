@@ -8,6 +8,9 @@ import Loader from "@/components/Loader";
 import Navigation from '@/components/Navigation';
 import { ToastContainer, toast } from "react-toastify";
 import CardDuvidas from "@/components/CardDuvidas";
+import styles from "./Duvidas.module.css"
+import Noticias from "@/components/Noticias";
+
 
 const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY};
 
@@ -69,11 +72,13 @@ const paginatedduvidas = () => {
 };
 
 return (
-    <div className="feed-container">
-        <Header />
+    <div>
+    <Header />
+    <div className={styles.container}>
         <Navigation />
 
         <ToastContainer />
+        <div className={styles.duvidasContainer}>
         <h1>Feed de duvidas</h1>
 
         <Pagination
@@ -88,16 +93,16 @@ return (
             {data.loading ? (
     <Loader />
 ) : (
-    <div className="duvidas-list">
-        {paginatedduvidas().map((duvida, idx) => (
-            <CardDuvidas
-                key={duvida.id ?? idx}
-                duvida={duvida}
-                onClick={() => openModal(duvida)}
-            />
-        ))}
+    <div className={styles.duvidasGrid}>
+  {paginatedduvidas().map((duvida, idx) => (
+    <div className={styles.duvidasWrapper} key={duvida.id ?? idx}>
+      <CardDuvidas duvida={duvida} onClick={() => openModal(duvida)} />
     </div>
+  ))}
+</div>
 )}
+</div>
+<Noticias />
         
         <Modal
             title={`Comentários de ${modalInfo.comentarios?.data_publicacao }`}
@@ -131,6 +136,7 @@ return (
                 )
             )}
         </Modal>
+    </div>
     </div>
 );
 }

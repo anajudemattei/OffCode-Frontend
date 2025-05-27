@@ -3,9 +3,8 @@
     background-color: #1B1212;
     padding: 20px;
     border-left: 2px solid #333;
-    position: sticky;
     top: 80px;
-    height: 100vh; 
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
 }
