@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./Duvidas.module.css";
-import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import CardDuvidas from "@/components/CardDuvidas";
 import Noticias from "@/components/Noticias";

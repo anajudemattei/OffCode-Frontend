@@ -4,13 +4,6 @@ const Header = () => {
     return (
         <header style={styles.header}>
             <h1 style={styles.title}>OffCode</h1>
-            <nav>
-                <ul style={styles.navList}>
-                    <li><a href="/" style={styles.link}>Home</a></li>
-                    <li><a href="/about" style={styles.link}>Sobre</a></li>
-                    <li><a href="/contact" style={styles.link}>Contato</a></li>
-                </ul>
-            </nav>
         </header>
     );
 };
