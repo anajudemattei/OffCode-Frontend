@@ -1,0 +1,7 @@
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta o tamanho mínimo dos cards */
+    gap: 2rem;
+    justify-content: center; /* Centraliza os cards */
+    padding: 2rem;
+}
