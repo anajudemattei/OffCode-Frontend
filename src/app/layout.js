@@ -10,9 +10,9 @@ const font = Roboto ({
 export const metadata = {
     title: "OffCode",
     icons: {
-    icon: "",
+    icon: "/images/favicon.png",
   },
-    description: "",
+    description: "A solução para suas dúvidas de programação",
 
 };
 

@@ -1,7 +1,7 @@
 .pageContainer {
     display: flex;
     flex-direction: row;
-    background-color: #0D0D0D;
+    background-color: #1B1212;
     color: white;
     min-height: 100vh;
 }

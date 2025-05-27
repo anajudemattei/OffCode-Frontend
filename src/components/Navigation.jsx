@@ -15,10 +15,10 @@ export default function Navigation() {
       priority />
       <nav className={styles.navigation}>
         <ul>
-         <Link href="/feed"> <NavigationText text="Feed" src="/images/feed-icon.png" /> </Link>
-         <Link href="/duvidas"><NavigationText text="Dúvidas" src="/images/duvidas.png"/> </Link>
-         <Link href="/perfis"> <NavigationText text="Perfis" src="/images/profiles.png"/> </Link>
-         <Link href="/equipe"> <NavigationText text="Equipe" src="/images/equipe.png"/> </Link>
+         <Link prefetch href="/feed"> <NavigationText text="Feed" src="/images/feed-icon.png" /> </Link>
+         <Link prefetch href="/duvidas"><NavigationText text="Dúvidas" src="/images/duvidas.png"/> </Link>
+         <Link prefetch href="/perfis"> <NavigationText text="Perfis" src="/images/profiles.png"/> </Link>
+         <Link prefetch href="/equipe"> <NavigationText text="Equipe" src="/images/equipe.png"/> </Link>
         </ul>
         </nav>
     </div>
