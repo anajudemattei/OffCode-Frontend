@@ -82,7 +82,7 @@ return (
         <div className={styles.duvidasContainer}>
         <h1>Feed de duvidas</h1>
 
-        <Pagination
+        <Pagination className={styles.pagination}
             current={data.current}
             pageSize={data.pageSize}
             total={data.duvidas.length}
