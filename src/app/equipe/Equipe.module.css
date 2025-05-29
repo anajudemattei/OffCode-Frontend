@@ -3,41 +3,49 @@
     flex-direction: row;
     background-color: #1B1212;
     color: white;
-    min-height: 100vh; 
-    height: 100vh; 
-    overflow-y: auto; 
+    min-height: 100vh;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-.equipeContainer {
+.mainContent {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    overflow-y: auto; 
-    box-sizing: border-box; 
+    align-items: stretch;
+    background: #1B1212;
+    min-height: 100vh;
+    padding: 0 2rem;
 }
 
-.equipeContainer::-webkit-scrollbar {
-    display: none; 
-}
 .headerSection {
     background-color: rgba(160, 32, 240, 0.4);
     padding: 1.5rem;
     border-radius: 10px;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 2rem 0 2rem 0;
     color: white;
 }
 
 .cardsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-direction: row;
     gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-    padding-bottom: 4rem; 
+    overflow-x: auto;
+    padding-bottom: 4rem;
     box-sizing: border-box;
+    background: #1B1212;
+}
+
+.cardsContainer::-webkit-scrollbar {
+    height: 8px;
+}
+.cardsContainer::-webkit-scrollbar-thumb {
+    background: #A020F0;
+    border-radius: 4px;
+}
+.cardsContainer::-webkit-scrollbar-track {
+    background: #2C2C2C;
 }
 
 .card {
@@ -46,6 +54,9 @@
     padding: 1rem;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 260px;
+    max-width: 260px;
+    flex: 0 0 auto;
 }
 
 .cardImage {
@@ -66,11 +77,11 @@
 }
 
 .cardInfo {
-    background-color: #A020F0; 
-    color: white; 
+    background-color: #A020F0;
+    color: white;
     padding: 0.5rem;
-    border-radius: 10px; 
+    border-radius: 10px;
     text-align: center;
-    width: 100%; 
-    box-sizing: border-box; 
+    width: 100%;
+    box-sizing: border-box;
 }
