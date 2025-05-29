@@ -1,73 +1,73 @@
 .flipCard {
-  background-color: transparent;
-  width: 300px; 
-  height: 400px; 
-  perspective: 1000px;
-  margin: 10px;
+    background-color: transparent;
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    margin: 10px;
 }
 
 .flipCardInner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
 .flipCard:hover .flipCardInner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .flipCardFront,
 .flipCardBack {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .flipCardFront {
-  background-color: #000000;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background-color: #000000;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flipCardBack {
-  background-color: #8C52FF;
-  color: white;
-  transform: rotateY(180deg);
+    background-color: #8C52FF;
+    color: white;
+    transform: rotateY(180deg);
 }
 
 .image {
-  width: 110%;
-  height: 110%;
-  object-fit: cover;
-  border-radius: 16px;
+    width: 110%;
+    height: 110%;
+    object-fit: cover;
+    border-radius: 16px;
 }
 
 .iconContainer {
-  display: flex;
-  gap: 16px;
-  margin-top: 16px;
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
 }
 
 .icon {
-  color: white;
-  font-size: 24px;
-  transition: color 0.3s ease;
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s ease;
 }
 
 .icon:hover {
-  color: #000000;
+    color: #000000;
 }
