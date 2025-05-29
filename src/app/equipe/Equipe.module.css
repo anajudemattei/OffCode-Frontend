@@ -1,5 +1,18 @@
 .pageContainer {
     display: flex;
+    flex-direction: row;
+    background-color: #000000;
+    min-height: 100vh;
+}
+
+.navigation {
+    flex: 0 0 200px; /* Define a largura fixa para o Navigation */
+    background-color: #1B1212; /* Cor de fundo para o Navigation */
+    min-height: 100vh; /* Faz o Navigation ocupar toda a altura */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
 }
 
 .mainContent {
@@ -8,6 +21,7 @@
     flex-direction: column;
     align-items: stretch;
     padding: 0 2rem;
+    overflow-y: auto;
 }
 
 .headerSection {
