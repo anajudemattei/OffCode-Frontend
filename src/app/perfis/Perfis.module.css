@@ -1,6 +1,30 @@
-.perfisContainer{
+
+.container {
     display: flex;
-    background-color: #030202;
+    background-color: #000; 
     min-height: 100vh;
-    width: 100%;
-}
+  }
+  
+  .usuariosContainer {
+    flex: 1;
+    padding: 2rem;
+    color: #fff;
+  }
+  
+  .usuariosGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .usuarioWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pagination {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
