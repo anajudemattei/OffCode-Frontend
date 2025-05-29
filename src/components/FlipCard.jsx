@@ -14,14 +14,10 @@ export default function FlipCard({
   return (
     <div className={styles.flipCard}>
       <div className={styles.flipCardInner}>
-        {/* Frente */}
         <div className={styles.flipCardFront}>
           <img src={frontImage} alt={backTitle} className={styles.image} />
-          <h3>{backTitle}</h3>
-          <p>{backText1}</p>
         </div>
 
-        {/* Verso */}
         <div className={styles.flipCardBack}>
           <h3>{backTitle}</h3>
           <p>{backText1}</p>
