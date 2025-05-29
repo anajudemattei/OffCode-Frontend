@@ -1,52 +1,5 @@
-.cardDuvidas {
-    background-color: #FFFFFF;
-    border-radius: 20px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    width: 100;
-}
 
-.cardHeader {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.cardHeader h2 {
-    font-size: 18px;
-    margin-left: 1rem;
-    color: #FFFFFF;
-}
-
-.image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #8C52FF;
-}
-
-.cardContent {
-    background-color: #1B1212;
-    padding: 1rem;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    color: #CCCCCC;
-}
-
-.line {
-    width: 100%;
-    height: 1px;
-    background-color: #444444;
-    margin: 1rem 0;
-}
-
-.cardFooter {
-    display: flex;
-    gap: 1rem;
-}
-
-.button, .buttonSave {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
+.cardContainer{
+    min-width: 100%;
+    transition: .3s ease-in-out; 
+  }

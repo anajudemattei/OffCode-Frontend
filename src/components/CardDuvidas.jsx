@@ -1,8 +1,10 @@
 import { Card } from "antd";
 import Image from "next/image";
+import styles from "../styles/CardDuvidas.module.css"
 
 export default function Cardduvidaagem({ duvida, onClick }) {
     return (
+        <div className={styles.cardContainer}>
         <Card
             hoverable
             onClick={onClick}
@@ -29,5 +31,6 @@ export default function Cardduvidaagem({ duvida, onClick }) {
                 }
             />
         </Card>
+        </div>
     )
 }

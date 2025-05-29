@@ -15,7 +15,7 @@ import ButtonTop from "@/components/ButtonTop";
 
 const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY};
 
-export default function Feed() {
+export default function Duvidas() {
     const [data, setData] = useState({
         duvidas: [],
         loading: true,
