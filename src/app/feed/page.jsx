@@ -23,6 +23,7 @@ export default function Feed() {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      const cacheKey = "postsData";
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/posts`,
@@ -55,25 +56,26 @@ export default function Feed() {
       <Navigation />
 
       <div className={styles.feedColumn}>
-        <Header />
-        <ToastContainer />
+      <Header />
+      <ToastContainer />
 
-        <div className={styles.feed}>
-          <h1>Feed</h1>
+      <div className={styles.feed}>
+        <h1>Feed</h1>
 
-          <Pagination
-            className={styles.pagination}
-            current={data.current}
-            pageSize={data.pageSize}
-            total={data.posts.length}
-            onChange={(page, pageSize) =>
-              setData({ ...data, current: page, pageSize })
-            }
-            showSizeChanger
-            pageSizeOptions={[5, 10, 20, 50]}
-          />
 
-          {data.loading ? (
+        <Pagination
+          className={styles.pagination}
+          current={data.current}
+          pageSize={data.pageSize}
+          total={data.posts.length}
+          onChange={(page, pageSize) =>
+            setData({ ...data, current: page, pageSize })
+          }
+          showSizeChanger
+          pageSizeOptions={[5, 10, 20, 50]}
+        />
+
+{data.loading ? (
             <Loader />
           ) : (
             
@@ -84,7 +86,7 @@ export default function Feed() {
                   post={post}
                   usuario={{
                     username: post.usuario_nome,
-                    foto_perfil: `${process.env.NEXT_PUBLIC_API_URL}/users/${post.foto_perfil}`,
+                    foto_perfil: `${process.env.NEXT_PUBLIC_IMG_URL}${post.foto_perfil}.jpg`,
                   }}
                 />
               ))}
@@ -93,6 +95,6 @@ export default function Feed() {
         </div>
       </div>
       <Noticias />
-    </div>
+      </div>
   );
 }
