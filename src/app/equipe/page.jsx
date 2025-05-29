@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import styles from "./equipe.module.css";
 import Navigation from "@/components/Navigation";
@@ -58,33 +58,33 @@ export default function Equipe() {
     ];
 
     return (
-        <>
-        <Header />
         <div className={styles.pageContainer}>
-          <Navigation />
-          <div className={styles.mainContent}>
-            <div className={styles.headerSection}>
-              <h1>Conheça Quem Está por Trás do Código</h1>
-              <p>
-                Nosso time de desenvolvedores une talento e inovação para transformar ideias em soluções digitais eficientes.
-              </p>
+            <div className={styles.navigation}>
+                <Navigation />
             </div>
-            <div className={styles.cardsContainer}>
-              {equipe.map((membro, index) => (
-                <FlipCard
-                  key={index}
-                  frontImage={membro.imagem}
-                  backTitle={membro.nome}
-                  backText1={membro.cargo}
-                  backText2="Parte da equipe OffCode"
-                  github={membro.github}
-                  linkedin={membro.linkedin}
-                  email={membro.email}
-                />
-              ))}
+            <div className={styles.mainContent}>
+                <Header />
+                <div className={styles.headerSection}>
+                    <h1>Conheça Quem Está por Trás do Código</h1>
+                    <p>
+                        Nosso time de desenvolvedores une talento e inovação para transformar ideias em soluções digitais eficientes.
+                    </p>
+                </div>
+                <div className={styles.cardsContainer}>
+                    {equipe.map((membro, index) => (
+                        <FlipCard
+                            key={index}
+                            frontImage={membro.imagem}
+                            backTitle={membro.nome}
+                            backText1={membro.cargo}
+                            backText2="Parte da equipe OffCode"
+                            github={membro.github}
+                            linkedin={membro.linkedin}
+                            email={membro.email}
+                        />
+                    ))}
+                </div>
             </div>
-          </div>
         </div>
-      </>
     );
 }
