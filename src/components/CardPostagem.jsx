@@ -36,15 +36,17 @@ export default function CardPostagem({ post, onClick, usuario }) {
       comentario: null,
       loading: true,
     });
-    try {
+    try {       
       const { data: comentario } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/comments/${post.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/comments/${comentario.id_post}`,
         { headers: headers }
       );
       setModalInfo((m) => ({ ...m, comentario, loading: false }));
+      console.log("Comentários carregados:", data);
     } catch (error) {
       toast.error("Erro ao carregar os comentários.");
       setModalInfo((m) => ({ ...m, loading: false }));
+        console.error("Erro ao carregar os comentários:", error);
     }
   };
 
@@ -73,15 +75,15 @@ export default function CardPostagem({ post, onClick, usuario }) {
                 <div className={styles.cardHeader}>
                     {usuario && (
                         <Image
-                            alt="Avatar do usuário"
-                            src={usuario.foto_perfil || "/images/default-profile.png"}
-                            width={40}
-                            height={40}
-                            className={styles.avatar}
-                        />
+                        alt="Avatar do usuário"
+                        src={usuario.foto_perfil || "/images/default-profile.png"}
+                        width={40}
+                        height={40}
+                        className={styles.avatar}
+                      />
                     )}
                     <div className={styles.userInfo}>
-                        <h2>{usuario?.username || "Usuário Desconhecido"}</h2>
+                        <h2>{usuario.username || "Usuário Desconhecido"}</h2>
                         <p><strong>Data:</strong> {post.data_publicacao}</p>
                     </div>
                 </div>
