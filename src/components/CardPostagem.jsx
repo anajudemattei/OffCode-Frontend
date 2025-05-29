@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 
 export default function CardPostagem({ post, onClick, usuario }) {
     const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
+    const [avatarSrc, setAvatarSrc] = useState(usuario.foto_perfil || "/images/default-profile.png");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalInfo, setModalInfo] = useState({
     visible: false,
@@ -76,10 +77,11 @@ export default function CardPostagem({ post, onClick, usuario }) {
                     {usuario && (
                         <Image
                         alt="Avatar do usuário"
-                        src={usuario.foto_perfil || "/images/default-profile.png"}
-                        width={40}
-                        height={40}
-                        className={styles.avatar}
+                            src={avatarSrc}
+                            width={40}
+                            height={40}
+                            className={styles.avatar}
+                            onError={() => setAvatarSrc("/images/default-profile.png")}
                       />
                     )}
                     <div className={styles.userInfo}>

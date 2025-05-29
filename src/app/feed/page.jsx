@@ -86,7 +86,7 @@ export default function Feed() {
                   post={post}
                   usuario={{
                     username: post.usuario_nome,
-                    foto_perfil: `${process.env.NEXT_PUBLIC_IMG_URL}${post.foto_perfil}.jpg`,
+                    foto_perfil: `${process.env.NEXT_PUBLIC_IMG_URL}/${post.foto_perfil}`,
                   }}
                 />
               ))}
