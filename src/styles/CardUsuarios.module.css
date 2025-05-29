@@ -1,40 +1,10 @@
-.card {
-    background-color: #d9d9d9;
-    border-radius: 12px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 150px;
-    cursor: pointer;
-    transition: transform 0.2s;
+
+  .cardContainer{
+    min-width: 100%;
+    transition: .3s ease-in-out; 
   }
-  
-  .card:hover {
-    transform: translateY(-4px);
-  }
-  
-  .top {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .username {
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  .stack {
-    font-size: 13px;
-    color: #000;
-    margin-top: 8px;
-  }
-  
-  .footer {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    margin-top: 8px;
+
+  .cardContainer:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
   }

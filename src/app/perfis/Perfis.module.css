@@ -1,14 +1,22 @@
 
 .container {
     display: flex;
-    background-color: #000; 
-    min-height: 100vh;
+    flex-direction: row;
+    background-color: #030202;
+    height: 100vh;
+    overflow: hidden;
   }
   
   .usuariosContainer {
     flex: 1;
-    padding: 2rem;
-    color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    overflow-y: auto;
+    height: 100%;
+    padding-right: 10px;
+    gap: 10px;
+    scrollbar-width: none;
   }
   
   .usuariosGrid {
