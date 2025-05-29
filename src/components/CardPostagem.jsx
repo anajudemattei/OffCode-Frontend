@@ -51,8 +51,7 @@ export default function CardPostagem({ post, onClick, usuario }) {
     const [liked, setLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(post.likes ? post.likes : 0);
 
-    const handleLike = (e) => {
-        e.stopPropagation();
+    const handleLike = () => {
         if (!liked) {
             setLiked(true);
             setLikeCount(likeCount + 1);
@@ -62,11 +61,13 @@ export default function CardPostagem({ post, onClick, usuario }) {
         }
     };
 
+    const [saved, setSaved] = useState(false);
+
     return (
         <>
             <div 
                 className={styles.cardContainer}
-                style={{ cursor: "pointer", marginBottom: "16px", border: "1px solid #ddd", borderRadius: "8px", padding: "16px", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}
+                style={{marginBottom: "16px", border: "1px solid #ddd", borderRadius: "8px", padding: "16px", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}
                 onClick={() => !isModalOpen && onClick?.()}
             >
                 <div className={styles.cardHeader}>
@@ -102,7 +103,12 @@ export default function CardPostagem({ post, onClick, usuario }) {
                 )}
 
                 <div className={styles.cardFooter}>
-                    <button className={styles.likeButton} onClick={handleLike}>
+                    <button
+                        className={styles.likeButton}
+                        onClick={handleLike}
+                        tabIndex={-1}
+                        type="button"
+                    >
                         <Image
                             alt="Ícone de curtir"
                             src={liked ? "/images/coracao-roxo.png" : "/images/coracao.png"}
@@ -116,14 +122,32 @@ export default function CardPostagem({ post, onClick, usuario }) {
                     </button>
                     <button
                         className={styles.commentButton}
-                        onClick={(e) => {
-                            e.stopPropagation(); // evita abrir o modal da imagem/card
-                            openModal(post);
-                        }}
+                        onClick={() => openModal(post)}
+                        tabIndex={-1}
+                        type="button"
                     >
-                        Comentários
+                        <Image
+                            alt="Ícone de comentário"
+                            src="/images/comente.png"
+                            width={24}
+                            height={24}
+                            className={styles.commentIcon}
+                        />
                     </button>
-                    <button className={styles.saveButton}>Save</button>
+                    <button
+                        className={styles.saveButton}
+                        onClick={() => setSaved((prev) => !prev)}
+                        tabIndex={-1}
+                        type="button"
+                    >
+                        <Image
+                            alt="Ícone de salvar"
+                            src={saved ? "/images/salvar-purple.png" : "/images/salvar.png"}
+                            width={24}
+                            height={24}
+                            className={styles.saveIcon}
+                        />
+                    </button>
                 </div>
             </div>
 

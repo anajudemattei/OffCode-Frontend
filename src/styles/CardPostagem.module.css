@@ -42,6 +42,7 @@
     max-width: 500px;
     max-height: 300px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .modalOverlay {
@@ -54,7 +55,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
 }
 
 .expandedImage {
@@ -62,5 +62,23 @@
   max-height: 90%;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  pointer-events: none; /* evita clique na imagem */
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.likeButton, .commentButton, .saveButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.likeButton {
+    align-items: center;
+    display: flex;
+    gap: 8px;
 }
