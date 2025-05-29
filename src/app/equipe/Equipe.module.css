@@ -1,11 +1,4 @@
 .pageContainer {
-    display: flex;
-    flex-direction: row;
-    background-color: #1B1212;
-    color: white;
-    min-height: 100vh;
-    height: 100vh;
-    overflow-y: auto;
 }
 
 .mainContent {
@@ -25,27 +18,6 @@
     text-align: center;
     margin: 2rem 0 2rem 0;
     color: white;
-}
-
-.cardsContainer {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    overflow-x: auto;
-    padding-bottom: 4rem;
-    box-sizing: border-box;
-    background: #1B1212;
-}
-
-.cardsContainer::-webkit-scrollbar {
-    height: 8px;
-}
-.cardsContainer::-webkit-scrollbar-thumb {
-    background: #A020F0;
-    border-radius: 4px;
-}
-.cardsContainer::-webkit-scrollbar-track {
-    background: #2C2C2C;
 }
 
 .card {
