@@ -23,7 +23,6 @@ export default function Feed() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const cacheKey = "postsData";
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/posts`,
@@ -53,47 +52,47 @@ export default function Feed() {
 
   return (
     <div className={styles.pageContainer}>
-        <Navigation />
+      <Navigation />
 
       <div className={styles.feedColumn}>
         <Header />
         <ToastContainer />
 
         <div className={styles.feed}>
-        <h1>Feed</h1>
+          <h1>Feed</h1>
 
-        <Pagination
-          className={styles.pagination}
-          current={data.current}
-          pageSize={data.pageSize}
-          total={data.posts.length}
-          onChange={(page, pageSize) =>
-            setData({ ...data, current: page, pageSize })
-          }
-          showSizeChanger
-          pageSizeOptions={[5, 10, 20, 50]}
-        />
+          <Pagination
+            className={styles.pagination}
+            current={data.current}
+            pageSize={data.pageSize}
+            total={data.posts.length}
+            onChange={(page, pageSize) =>
+              setData({ ...data, current: page, pageSize })
+            }
+            showSizeChanger
+            pageSizeOptions={[5, 10, 20, 50]}
+          />
 
-        {data.loading ? (
-          <Loader />
-        ) : (
-          <div className="posts-list">
-            {paginatedPosts().map((post, idx, usuario) => (
-              <CardPostagem
-  key={post.id_post ?? idx}
-  post={post}
-  usuario={{
-    username: usuario.username,
-    avatar: usuario.foto_perfil,
-    id_usuario: post.id_usuario,
-  }}
-/>
-            ))}
-          </div>
-        )}
+          {data.loading ? (
+            <Loader />
+          ) : (
+            
+<div className="posts-list">
+              {paginatedPosts().map((post, idx) => (
+                <CardPostagem
+                  key={post.id_post ?? idx}
+                  post={post}
+                  usuario={{
+                    username: post.usuario_nome,
+                    foto_perfil: `${process.env.NEXT_PUBLIC_API_URL}/users/${post.foto_perfil}`,
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
-        <Noticias />
+      <Noticias />
     </div>
   );
 }
