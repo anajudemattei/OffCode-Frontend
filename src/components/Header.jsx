@@ -50,14 +50,18 @@ export default function Header() {
             return;
         }
 
-        const filtrados = data.posts.filter(post =>
-            post.nome?.toLowerCase().includes(filtro.toLowerCase())
-        );
+        const filtrados = data.posts.filter(post => {
+            const filtroLower = filtro.toLowerCase();
+            return (
+                post.nome?.toLowerCase().includes(filtroLower) ||
+                post.linguagem?.toLowerCase().includes(filtroLower)
+            );
+        });
 
         setResultado(filtrados);
 
         if (filtrados.length === 0) {
-            const msg = "Usuário não encontrado.";
+            const msg = "Nenhum resultado encontrado.";
             setMensagem(msg);
             toast.error(msg); 
         } else {
@@ -80,7 +84,7 @@ export default function Header() {
             <div className={styles.filters}>
                 <input
                     type="text"
-                    placeholder="Filtre aqui 🔎"
+                    placeholder="Filtre por nome ou linguagem 🔎"
                     className={styles.searchInput}
                     value={filtro}
                     onChange={(e) => setFiltro(e.target.value)}
@@ -97,7 +101,9 @@ export default function Header() {
                     )}
 
                     {resultado.map((item, index) => (
-                        <span key={index}>Nome: {item.nome} ✖️</span>
+                        <span key={index}>
+                            Nome: {item.nome}, Linguagem: {item.linguagem} ✖️
+                        </span>
                     ))}
                 </div>
             </div>
