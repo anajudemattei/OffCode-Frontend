@@ -3,25 +3,32 @@
     flex-direction: row;
     background-color: #000000;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .navigation {
-    flex: 0 0 200px; /* Define a largura fixa para o Navigation */
-    background-color: #1B1212; /* Cor de fundo para o Navigation */
-    min-height: 100vh; /* Faz o Navigation ocupar toda a altura */
+    flex: 0 0 200px;
+    background-color: #1B1212;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem;
+    padding: 0;
+    z-index: 1000;
 }
 
 .mainContent {
     flex: 1;
+    margin-left: 200px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     padding: 0 2rem;
     overflow-y: auto;
+    margin-top: 100px;
 }
 
 .headerSection {
@@ -31,6 +38,15 @@
     text-align: center;
     margin: 2rem 0;
     color: white;
+}
+
+.headerWrapper {
+    position: fixed;
+    top: 0;
+    left: 200px;
+    width: calc(100% - 200px);
+    z-index: 1000;
+    background-color: #000000;
 }
 
 .card {
