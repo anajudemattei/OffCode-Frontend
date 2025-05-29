@@ -3,7 +3,7 @@
 .container {
     display: flex;
     flex-direction: row;
-    background-color: #1b1212;
+    background-color: #030202;
     height: 100vh;
     overflow: hidden;
 }

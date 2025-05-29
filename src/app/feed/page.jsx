@@ -53,15 +53,11 @@ export default function Feed() {
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.navigationColumn}>
         <Navigation />
-      </div>
 
       <div className={styles.feedColumn}>
-        <div className={styles.header}>
         <Header />
         <ToastContainer />
-        </div>
 
         <div className={styles.feed}>
         <h1>Feed</h1>
@@ -87,8 +83,9 @@ export default function Feed() {
   key={post.id_post ?? idx}
   post={post}
   usuario={{
-    username: post.username,
-    avatar: post.foto_perfil?.startsWith("http") ? post.foto_perfil : `/${post.foto_perfil}` // cuida de path relativo
+    username: usuario.username,
+    avatar: usuario.foto_perfil,
+    id_usuario: post.id_usuario,
   }}
 />
             ))}
@@ -96,10 +93,7 @@ export default function Feed() {
         )}
         </div>
       </div>
-
-      <div className={styles.noticiasColumn}>
         <Noticias />
-      </div>
     </div>
   );
 }

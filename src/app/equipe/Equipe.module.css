@@ -1,4 +1,11 @@
 .pageContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: #030202;
+    color: white;
+    min-height: 100vh; 
+    height: 100vh; 
+    overflow-y: auto; 
 }
 
 .mainContent {

@@ -1,19 +1,22 @@
 .pageContainer {
   display: flex;
   flex-direction: row;
-  background-color: #1B1212;
-  color: white;
+  background-color: #030202;
   height: 100vh;
 }
 
 .feedColumn {
-  overflow-y: auto;
-  flex-direction: column;
- scrollbar-width: none;
+  flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
+    scrollbar-width: none;
 }
 
 .feed {
     padding: 3rem;
+    width: 100%;
 }
 
 .feed h1 {
@@ -47,4 +50,8 @@
 
 .pagination .ant-pagination {
   color: #8C52FF;
+}
+
+.noticiasColumn {
+  margin-right: 0%;
 }
