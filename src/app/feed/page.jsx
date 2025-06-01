@@ -62,19 +62,6 @@ export default function Feed() {
       <div className={styles.feed}>
         <h1>Feed</h1>
 
-
-        <Pagination
-          className={styles.pagination}
-          current={data.current}
-          pageSize={data.pageSize}
-          total={data.posts.length}
-          onChange={(page, pageSize) =>
-            setData({ ...data, current: page, pageSize })
-          }
-          showSizeChanger
-          pageSizeOptions={[5, 10, 20, 50]}
-        />
-
 {data.loading ? (
             <Loader />
           ) : (
@@ -90,6 +77,17 @@ export default function Feed() {
                   }}
                 />
               ))}
+              <Pagination
+          className={styles.pagination}
+          current={data.current}
+          pageSize={data.pageSize}
+          total={data.posts.length}
+          onChange={(page, pageSize) =>
+            setData({ ...data, current: page, pageSize })
+          }
+          showSizeChanger
+          pageSizeOptions={[5, 10, 20, 50]}
+        />
             </div>
           )}
         </div>

@@ -107,10 +107,6 @@ export default function Header() {
                     ))}
                 </div>
             </div>
-
-            <div className={styles.searchContainer}>
-                <input type="text" placeholder="Pesquisar🔎" className={styles.searchInput} />
-            </div>
         </div>
     );
 }
