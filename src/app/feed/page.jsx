@@ -60,7 +60,6 @@ export default function Feed() {
       <ToastContainer />
 
       <div className={styles.feed}>
-        <h1>Feed</h1>
 
 {data.loading ? (
             <Loader />

@@ -76,22 +76,12 @@ return (
     <div>
     <Header />
     <div className={styles.container}>
-        <Navigation />
+    <Navigation />
 
-        <ToastContainer />
-        <div className={styles.duvidasContainer}>
-        <h1>Feed de duvidas</h1>
+    <ToastContainer />
+    <div className={styles.duvidasContainer}>
 
-        <Pagination className={styles.pagination}
-            current={data.current}
-            pageSize={data.pageSize}
-            total={data.duvidas.length}
-            onChange={(page, pageSize) => setData({ ...data, current: page, pageSize })}
-            showSizeChanger
-            pageSizeOptions={[5, 10, 20, 50]}
-            />
-
-            {data.loading ? (
+    {data.loading ? (
     <Loader />
 ) : (
     <div className={styles.duvidasGrid}>
@@ -99,10 +89,20 @@ return (
     <div className={styles.duvidasWrapper} key={duvida.id ?? idx}>
       <CardDuvidas duvida={duvida} onClick={() => openModal(duvida)} />
     </div>
+    
   ))}
+  <Pagination className={styles.pagination}
+            current={data.current}
+            pageSize={data.pageSize}
+            total={data.duvidas.length}
+            onChange={(page, pageSize) => setData({ ...data, current: page, pageSize })}
+            showSizeChanger
+            pageSizeOptions={[5, 10, 20, 50]}
+            />
 </div>
 )}
 </div>
+
 <Noticias />
         
         <Modal
