@@ -1,46 +1,58 @@
-
-
-.container {
+.pageContainer {
     display: flex;
     flex-direction: row;
     background-color: #030202;
     height: 100vh;
-    overflow: hidden;
-}
-
-.container h1 {
-    color: #8C52FF;
-    font-size: 2rem;
-    margin: 0;
-    text-align: center;
-}
-
-.duvidasContainer {
+  }
+  
+  .duvidasColumn {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    overflow-y: auto;
-    height: 100%;
-    padding-right: 10px;
-    gap: 10px;
-    scrollbar-width: none;
-}
-
-
-.pagination {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      height: 100%;
+      scrollbar-width: none;
+  }
+  
+  .duvidas {
+      padding: 3rem;
+      width: 100%;
+  }
+  
+  .duvidas h1 {
+    color: #8C52FF;
+    text-transform: uppercase;
+  }
+  
+  .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    
-}
-
-.pagination:hover button {
+    margin-top: 2rem;
+    color: #8C52FF;
+  }
+  
+  .pagination .ant-pagination .ant-pagination-item-active a {
     background-color: #8C52FF;
     color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin: 0 5px;
-    cursor: pointer;
-}
+  }
+  
+  .pagination .ant-pagination .ant-pagination-item a {
+    color: #8C52FF;
+  }
+  
+  .pagination .ant-pagination .ant-pagination-item-active {
+    border-color: #8C52FF;
+  }
+  
+  .pagination .ant-pagination .ant-pagination-item {
+    border-color: #8C52FF;
+  }
+  
+  .pagination .ant-pagination {
+    color: #8C52FF;
+  }
+  
+  .noticiasColumn {
+    margin-right: 0%;
+  }
+

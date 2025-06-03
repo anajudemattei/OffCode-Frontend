@@ -23,7 +23,7 @@ export default function CardUsuarioImagem({ usuario, onClick }) {
             >
                 <Card.Meta
                     avatar={
-                        usuario.foto_capa && usuario.foto_capa !== "NULL" && usuario.foto_capa !== "null" && usuario.foto_capa !== "" ? (
+                        usuario.foto_capa && usuario.foto_perfil !== "NULL" && usuario.foto_perfil !== "null" && usuario.foto_perfil !== "" ? (
                             <Image
                                 src={usuario.foto_capa}
                                 alt="Foto de capa"
@@ -33,10 +33,10 @@ export default function CardUsuarioImagem({ usuario, onClick }) {
                             />
                         ) : null
                     }
-                    title={usuario.nome || "Nome não informado"}
+                    title={usuario.username || "Nome não informado"}
                     description={
                         <>
-                            <div><strong>Username:</strong> {usuario.username}</div>
+                            <div><strong>Nome:</strong> {usuario.nome}</div>
                             <div><strong>Tipo de Conta:</strong> {usuario.tipo_conta}</div>
                             {usuario.descricao && (
                                 <div><strong>Descrição:</strong> {usuario.descricao}</div>
