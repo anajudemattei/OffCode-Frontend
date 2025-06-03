@@ -6,7 +6,7 @@ import axios from "axios";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
 
-export default function CardPostagem({ post, onClick, usuario }) {
+export default function CardDuvidas({ post, onClick, usuario }) {
     const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
     const IMG_URL = process.env.NEXT_PUBLIC_IMG_URL;
     const [avatarSrc, setAvatarSrc] = useState(usuario.foto_perfil || "/images/default-profile.png");
