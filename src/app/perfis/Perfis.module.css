@@ -36,3 +36,9 @@
     display: flex;
     justify-content: center;
   }
+
+  @media (max-width: 768px) {
+    .usuariosGrid {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+  }
