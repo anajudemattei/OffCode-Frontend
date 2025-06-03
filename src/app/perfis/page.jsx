@@ -66,16 +66,6 @@ export default function FeedUsuarios() {
                 <ToastContainer />
 
                 <div className={styles.usuariosContainer}>
-                    <Pagination
-                        className={styles.pagination}
-                        current={data.current}
-                        pageSize={data.pageSize}
-                        total={data.usuarios.length}
-                        onChange={(page, pageSize) => setData({ ...data, current: page, pageSize })}
-                        showSizeChanger
-                        pageSizeOptions={[5, 10, 20, 50]}
-                    />
-
                     {data.loading ? (
                         <Loader />
                     ) : (
@@ -87,7 +77,17 @@ export default function FeedUsuarios() {
                             ))}
                         </div>
                     )}
+                    <Pagination
+                        className={styles.pagination}
+                        current={data.current}
+                        pageSize={data.pageSize}
+                        total={data.usuarios.length}
+                        onChange={(page, pageSize) => setData({ ...data, current: page, pageSize })}
+                        showSizeChanger
+                        pageSizeOptions={[5, 10, 20, 50]}
+                    />
                 </div>
+                
                 <Modal
                     title={`Perfil de ${modalInfo.usuario?.nome}`}
                     open={modalInfo.visible}
@@ -113,8 +113,6 @@ export default function FeedUsuarios() {
                     )}
                 </Modal>
             </div>
-
-            <ButtonTop onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
         </div>
     );
 }

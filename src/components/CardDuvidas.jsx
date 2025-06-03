@@ -40,7 +40,7 @@ export default function CardPostagem({ duvida, onClick, usuario }) {
     });
     try {       
       const { data: comentarios } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/comments/user/${duvida.id_post}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/comments/user/${duvida.id_}`,
         { headers: headers }
       );
       setModalInfo((m) => ({ ...m, comentario: comentarios, loading: false }));
