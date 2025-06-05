@@ -6,7 +6,7 @@ import axios from "axios";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
 
-export default function CardPostagem({ duvida, onClick, usuario }) {
+export default function CardDuvida({ duvida, onClick, usuario }) {
     const headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
     const IMG_URL = process.env.NEXT_PUBLIC_IMG_URL;
     const [avatarSrc, setAvatarSrc] = useState(usuario.foto_perfil || "/images/default-profile.png");
@@ -40,7 +40,7 @@ export default function CardPostagem({ duvida, onClick, usuario }) {
     });
     try {       
       const { data: comentarios } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/comments/user/${duvida.id_}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/comments/user/${duvida.id_duvida}`,
         { headers: headers }
       );
       setModalInfo((m) => ({ ...m, comentario: comentarios, loading: false }));
