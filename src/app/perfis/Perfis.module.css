@@ -1,11 +1,9 @@
-
-.container {
-    display: flex;
-    flex-direction: row;
-    background-color: #030202;
-    height: 100vh;
-    overflow: hidden;
-  }
+.pageContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #030202;
+  height: 100%;
+}
   
   .usuariosContainer {
     flex: 1;
@@ -13,7 +11,6 @@
     flex-direction: column;
     margin-left: 20px;
     overflow-y: auto;
-    height: 100%;
     padding-right: 10px;
     gap: 10px;
     scrollbar-width: none;

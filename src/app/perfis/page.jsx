@@ -59,12 +59,11 @@ export default function FeedUsuarios() {
     };
 
     return (
-        <div>
-            <Header />
+        <div className={styles.pageContainer}>
+            <Navigation />
             <div className={styles.container}>
-                <Navigation />
+            <Header />
                 <ToastContainer />
-
                 <div className={styles.usuariosContainer}>
                     {data.loading ? (
                         <Loader />
@@ -77,7 +76,7 @@ export default function FeedUsuarios() {
                             ))}
                         </div>
                     )}
-                    <Pagination
+                     <Pagination
                         className={styles.pagination}
                         current={data.current}
                         pageSize={data.pageSize}
@@ -87,7 +86,6 @@ export default function FeedUsuarios() {
                         pageSizeOptions={[5, 10, 20, 50]}
                     />
                 </div>
-                
                 <Modal
                     title={`Perfil de ${modalInfo.usuario?.nome}`}
                     open={modalInfo.visible}
