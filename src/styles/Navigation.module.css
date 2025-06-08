@@ -11,6 +11,10 @@
   transition: transform 0.3s ease;
 }
 
+.feedNavigation a {
+  text-decoration: none;
+}
+
 .image {
   border-radius: 100%;
   margin: 1rem 0;
