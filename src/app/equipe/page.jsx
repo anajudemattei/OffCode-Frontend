@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./equipe.module.css";
+import styles from "./Equipe.module.css";
 import Navigation from "@/components/Navigation";
 import Header from "@/components/Header";
 import FlipCard from "@/components/FlipCard";
