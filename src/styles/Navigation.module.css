@@ -6,6 +6,7 @@
   min-height: 100vh;
   padding: 1rem;
   width: 200px;
+  min-width: 200px;
   position: relative;
   z-index: 1;
   transition: transform 0.3s ease;

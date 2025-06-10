@@ -5,6 +5,10 @@
   height: 100%;
 }
   
+.container {
+  width: 100%;
+}
+
   .usuariosContainer {
     flex: 1;
     display: flex;
@@ -37,5 +41,12 @@
   @media (max-width: 768px) {
     .usuariosGrid {
       grid-template-columns: repeat(2, 1fr); 
+    }
+    .pageContainer {
+      height: 150vh;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
     }
   }
